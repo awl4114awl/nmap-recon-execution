@@ -165,7 +165,8 @@ The incident was:
 
 <p align="left">
   <img src="assets/Screenshot 2026-02-23 164818.png" width="600">
-  <img src="assets/Screenshot 2026-02-23 164858.png" width="600">  
+  <img src="assets/Screenshot 2026-02-23 164858.png" width="600">
+  <img src="assets/Screenshot 2026-02-24 135644.png" width="600">
 </p>
 
 This demonstrates operational SOC process maturity beyond detection creation.
