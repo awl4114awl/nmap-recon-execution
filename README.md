@@ -37,7 +37,12 @@ This project validates:
 Microsoft Defender for Endpoint was installed and verified healthy on the Linux endpoint.
 
 <p align="left">
-  <img src="assets/Screenshot 2026-02-22 193427.png" width="600">
+  <img src="assets/Screenshot 2026-02-23 113115.png" width="600">
+  <img src="assets/Screenshot 2026-02-23 113336.png" width="600">
+  <img src="assets/Screenshot 2026-02-23 113616.png" width="600">
+  <img src="assets/Screenshot 2026-02-23 113908.png" width="600">
+  <img src="assets/Screenshot 2026-02-23 113925.png" width="600">
+  <img src="assets/Screenshot 2026-02-23 114923.png" width="600">  
 </p>
 
 Telemetry ingestion was validated using Advanced Hunting queries in Microsoft Sentinel.
