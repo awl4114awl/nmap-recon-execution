@@ -49,7 +49,10 @@ Telemetry ingestion was validated using Advanced Hunting queries in Microsoft Se
 
 ### Screenshot – Advanced Hunting Query Results
 
-`![Advanced Hunting Results](images/advanced-hunting-validation.png)`
+<p align="left">
+  <img src="assets/Screenshot 2026-02-23 115611.png" width="600">
+  <img src="assets/Screenshot 2026-02-23 115929.png" width="600">  
+</p>
 
 ---
 
@@ -63,9 +66,9 @@ nmap 8.8.8.8
 
 This generated process telemetry captured by Defender and forwarded into Sentinel.
 
-### Screenshot – Nmap Execution on Kali
-
-`![Nmap Execution](images/nmap-execution-terminal.png)`
+<p align="left">
+  <img src="assets/Screenshot 2026-02-23 120707.png" width="600">
+</p>
 
 ---
 
@@ -76,11 +79,10 @@ A custom scheduled analytics rule was created using KQL:
 ```kql
 DeviceProcessEvents
 | where DeviceName contains "kali"
-| where ProcessFileName =~ "nmap"
+| where ProcessCommandLine has "nmap"
 | extend HostCustomEntity = DeviceName
 | extend AccountCustomEntity = AccountName
-| extend ProcessCustomEntity = ProcessCommandLine
-| project TimeGenerated, DeviceName, AccountName, ProcessFileName, ProcessCommandLine, InitiatingProcessCommandLine
+| project TimeGenerated, AccountName, ProcessCommandLine, InitiatingProcessCommandLine
 ```
 
 Detection configuration:
@@ -90,9 +92,10 @@ Detection configuration:
 * MITRE ATT&CK: Discovery – T1046
 * Rule Type: Scheduled Analytics Rule
 
-### Screenshot – Analytics Rule Configuration
-
-`![Analytics Rule Config](images/analytics-rule-config.png)`
+<p align="left">
+  <img src="assets/Screenshot 2026-02-24 135050.png" width="600">
+  <img src="assets/Screenshot 2026-02-23 121120.png" width="600">  
+</p>
 
 ---
 
@@ -106,9 +109,9 @@ Mapped Entities:
 * Account → AccountName
 * Process → ProcessCommandLine
 
-### Screenshot – Entity Mapping Configuration
-
-`![Entity Mapping](images/entity-mapping.png)`
+<p align="left">
+  <img src="assets/Screenshot 2026-02-23 122103.png" width="600">
+</p>
 
 ---
 
@@ -116,9 +119,10 @@ Mapped Entities:
 
 After execution of the reconnaissance command, Microsoft Sentinel generated an incident.
 
-### Screenshot – Incident Created in Sentinel
-
-`![Incident Created](images/sentinel-incident-created.png)`
+<p align="left">
+  <img src="assets/Screenshot 2026-02-23 121203.png" width="600">
+  <img src="assets/Screenshot 2026-02-23 153527.png" width="600">  
+</p>
 
 The incident included:
 
@@ -133,17 +137,10 @@ The incident included:
 
 The investigation graph validated entity relationships and alert correlation.
 
-### Screenshot – Incident Overview Panel
-
-`![Incident Overview](images/incident-overview.png)`
-
-### Screenshot – Entities Panel
-
-`![Entities Panel](images/entities-panel.png)`
-
-### Screenshot – Investigation Graph
-
-`![Investigation Graph](images/investigation-graph.png)`
+<p align="left">
+  <img src="assets/Screenshot 2026-02-23 153621.png" width="600">
+  <img src="assets/Screenshot 2026-02-23 153645.png" width="600">  
+</p>
 
 The investigation graph correctly correlated:
 
@@ -166,42 +163,9 @@ The incident was:
 * Classified as True Positive (Security Testing)
 * Closed with documentation
 
-### Screenshot – Incident Assignment
-
-`![Incident Assigned](images/incident-assigned.png)`
-
-### Screenshot – Incident Closure
-
-`![Incident Closed](images/incident-closed.png)`
+<p align="left">
+  <img src="assets/Screenshot 2026-02-23 164818.png" width="600">
+  <img src="assets/Screenshot 2026-02-23 164858.png" width="600">  
+</p>
 
 This demonstrates operational SOC process maturity beyond detection creation.
-
----
-
-## Skills Demonstrated
-
-* Linux EDR deployment validation
-* KQL-based detection engineering
-* Scheduled analytics rule configuration
-* MITRE ATT&CK alignment
-* Entity enrichment configuration
-* SOC investigation workflow
-* Incident triage and lifecycle management
-* Azure + Microsoft Sentinel operations
-
----
-
-## Conclusion
-
-This lab demonstrates a complete detection engineering and SOC investigation lifecycle:
-
-1. Simulate adversary behavior
-2. Validate endpoint telemetry
-3. Engineer targeted detection logic
-4. Map entities for investigation enrichment
-5. Generate and investigate a SIEM incident
-6. Document and close incident properly
-
-The environment successfully replicated an enterprise-grade reconnaissance detection scenario aligned with real-world SOC operations.
-
----
